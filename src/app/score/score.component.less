@@ -1,0 +1,251 @@
+@currentscore : #0fa1ea;
+@targetscore :#ffe289;
+@primaryfont :#404040;
+@font-face {
+    font-family: Museo Sans;
+    src: url('../../assets/fonts/Museo Sans W01 300.ttf');
+}
+
+.scorepredictpagewrap {
+    font-family: 'Museo Sans', sans-serif;
+    color: @primaryfont;
+    form {
+        display: flex;
+        flex-direction: column;
+        width: 925px;
+        margin: 0 auto;
+        @media screen and (max-width: 925px) {
+            width: 100%;
+            padding: 0 30px;
+        }
+        .formwrap {
+            display: flex;
+            @media screen and (max-width: 768px) {
+                flex-direction: column;
+                margin: 0 auto;
+            }
+            .contentwrap {
+                width: 50%;
+                @media screen and (max-width: 768px) {
+                    width: auto;
+                }
+                .formgrouptitle {
+                    font-size: 30px;
+                    letter-spacing: 1px;
+                }
+                .formgroupwrap {
+                    display: flex;
+                    @media screen and (max-width: 500px) {
+                        flex-direction: column;
+                    }
+                    .form-group {
+                        display: flex;
+                        margin-right: 30px;
+                        @media screen and (max-width: 500px) {
+                            margin-right: 0;
+                        }
+                        label {
+                            font-size: 20px;
+                            letter-spacing: 1px;
+                            margin-right: 11px;
+                            @media screen and (max-width: 500px) {
+                                width: 80px;
+                            }
+                        }
+                        .form-control {
+                            padding: 2px 8px 0;
+                            width: 75px;
+                            font-size: 18px;
+                            height: 30px;
+                            border-radius: 0;
+                            display: inline-block;
+                            border: 1px solid #a6a6a6;
+                            &:focus {
+                                box-shadow: none;
+                            }
+                            &.is-invalid {
+                                padding-right: 0;
+                                background-image: none;
+                                &:focus {
+                                    box-shadow: none;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        button {
+            margin: 20px auto 35px;
+            padding: 8px 25px;
+            letter-spacing: 1px;
+            font-size: 16px;
+            background: #0098db;
+            color: #ffffff;
+            border: 0;
+            border-radius: 20px;
+            cursor: pointer;
+            &:focus {
+                outline: 0;
+            }
+            &:disabled {
+                cursor: default;
+                opacity: 0.8;
+            }
+        }
+    }
+    .resultswrap {
+        visibility: hidden;
+        label {
+            display: block;
+            font-size: 30px;
+        }
+        .totalscorewrap {
+            background: #fafafa;
+            .totalscorecontent {
+                width: 925px;
+                margin: 0 auto;
+                padding: 15px 0 20px;
+                @media screen and (max-width: 925px) {
+                    width: 100%;
+                    padding: 15px 30px 20px;
+                }
+                .totalscoretitle {
+                    font-size: 33px;
+                    margin: 2px 0;
+                    letter-spacing: 1px;
+                }
+                .totalscore {
+                    font-size: 36px;
+                    letter-spacing: 2px;
+                }
+            }
+        }
+        .quantverbalwrap {
+            display: flex;
+            width: 925px;
+            margin: 30px auto 50px;
+            @media screen and (max-width: 925px) {
+                width: 100%;
+                padding: 0 30px;
+            }
+            @media screen and (max-width: 768px) {
+                flex-direction: column;
+            }
+            .quantscorecontent,
+            .verbalscorecontent {
+                width: 50%;
+                @media screen and (max-width: 768px) {
+                    width: auto;
+                }
+                .quantscoretitle,
+                .verbalscoretitle {
+                    font-size: 20px;
+                }
+                .quantscore,
+                .verbalscore {
+                    font-size: 34px;
+                    letter-spacing: 2px;
+                }
+            }
+            .quantscorecontent {
+                border-right: 1px solid #f2f2f2;
+                padding-right: 50px;
+                @media screen and (max-width: 768px) {
+                    border-right: 0;
+                    padding-right: 0;
+                }
+            }
+            .verbalscorecontent {
+                padding-left: 50px;
+                @media screen and (max-width: 768px) {
+                    padding-left: 0;
+                    margin-top: 30px;
+                }
+            }
+            label {
+                margin: 0 0 2px 0;
+            }
+        }
+        .graph {
+            height: 17px;
+            background: #f5f5f5;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            margin-top: 35px;
+            position: relative;
+            .currentscorebar {
+                background: @currentscore;
+                z-index: 2;
+            }
+            .targetscorebar {
+                background: @targetscore;
+                z-index: 1;
+            }
+            .currentscorebar,
+            .targetscorebar {
+                position: absolute;
+                height: 100%;
+                border-top-right-radius: 10px;
+                border-bottom-right-radius: 10px;
+                .score {
+                    position: absolute;
+                    bottom: 31px;
+                    &.scoredown {
+                        top: 30px;
+                        bottom: auto;
+                    }
+                }
+                .currentscorepoint {
+                    border-top: 11px solid @currentscore;
+                }
+                .targetscorepoint {
+                    border-top: 11px solid @targetscore;
+                }
+                .currentscorepoint,
+                .targetscorepoint {
+                    width: 0;
+                    height: 0;
+                    border-left: 3px solid transparent;
+                    border-right: 3px solid transparent;
+                    position: absolute;
+                    right: -3px;
+                    bottom: 17px;
+                    &.arrowdown {
+                        top: 17px;
+                        bottom: auto;
+                        border-bottom: 11px solid @targetscore;
+                        border-top: none;
+                    }
+                }
+            }
+            span {
+                color: #bfbfbf;
+            }
+            .scoredifference {
+                position: absolute;
+                z-index: 1;
+                top: -3px;
+                color: #7f7d7e;
+            }
+        }
+        p {
+            font-family: 'Lato', sans-serif;
+            font-weight: 300;
+            color: #a6a6a6;
+            font-size: 16px;
+            letter-spacing: .5px;
+            margin: 40px 0 0;
+            span {
+                color: @primaryfont;
+                font-weight: 400;
+            }
+        }
+    }
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

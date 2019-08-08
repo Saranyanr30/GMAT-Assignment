@@ -1,0 +1,103 @@
+<div class="scorepredictpagewrap">
+ <form (ngSubmit)="save()" [formGroup]="scoreForm">
+  <div class="formwrap">
+    <div class="contentwrap">
+      <label class="formgrouptitle">Quant</label>
+      <div class="formgroupwrap">
+        <div class="form-group">
+          <label for="currentQuantId">Current</label>
+          <input class="form-control" id="currentQuantId" type="number" formControlName="currentQuant" [ngClass]="{'is-invalid': (scoreForm.get('currentQuant').touched || scoreForm.get('currentQuant').dirty) && !scoreForm.get('currentQuant').valid}">
+          <!-- <span class="invalid-feedback">
+                <span *ngIf="scoreForm.get('currentQuant').errors?.required">Please enter your Current Quant score</span>
+                <span *ngIf="scoreForm.get('currentQuant').errors?.min || scoreForm.get('currentQuant').errors?.max">Score should range between 1 and 60</span>
+              </span> -->
+        </div>
+        <div class="form-group">
+          <label for="targetQuantId">Target</label>
+          <input class="form-control" id="targetQuantId" type="number" formControlName="targetQuant" [ngClass]="{'is-invalid': (scoreForm.get('targetQuant').touched || scoreForm.get('targetQuant').dirty) && !scoreForm.get('targetQuant').valid}">
+          <!-- <span class="invalid-feedback">
+                <span *ngIf="scoreForm.get('targetQuant').errors?.required">Please enter your Target Quant score</span>
+                <span *ngIf="scoreForm.get('targetQuant').errors?.min || scoreForm.get('targetQuant').errors?.max">Score should range between 1 and 60</span>
+              </span> -->
+        </div>
+      </div>
+    </div>
+    <div class="contentwrap">
+      <label class="formgrouptitle">Verbal</label>
+      <div class="formgroupwrap">
+        <div class="form-group">
+          <label for="currentVerbalId">Current</label>
+          <input class="form-control" id="currentVerbalId" type="number" formControlName="currentVerbal" [ngClass]="{'is-invalid': (scoreForm.get('currentVerbal').touched || scoreForm.get('currentVerbal').dirty) && !scoreForm.get('currentVerbal').valid}">
+          <!-- <span class="invalid-feedback">
+                <span *ngIf="scoreForm.get('currentVerbal').errors?.required">Please enter your Current Verbal score</span>
+                <span *ngIf="scoreForm.get('currentVerbal').errors?.min || scoreForm.get('currentVerbal').errors?.max">Score should range between 1 and 60</span>
+              </span> -->
+        </div>
+        <div class="form-group">
+          <label for="targetVerbalId">Target</label>
+          <input class="form-control" id="targetVerbalId" type="number" formControlName="targetVerbal" [ngClass]="{'is-invalid': (scoreForm.get('targetVerbal').touched || scoreForm.get('targetVerbal').dirty) && !scoreForm.get('targetVerbal').valid}">
+          <!-- <span class="invalid-feedback">
+                <span *ngIf="scoreForm.get('targetVerbal').errors?.required">Please enter your Target Verbal score</span>
+                <span *ngIf="scoreForm.get('targetVerbal').errors?.min || scoreForm.get('targetVerbal').errors?.max">Score should range between 1 and 60</span>
+              </span> -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <button type="submit" [disabled]="!scoreForm.valid">Submit and Refresh</button>
+</form>
+<div class="resultswrap" id="resultswrap">
+  <div class="totalscorewrap">
+    <div class="totalscorecontent">
+      <label class="totalscoretitle">Total Score</label>
+      <label class="totalscore" id="totalscoretitle"></label>
+      <div class="graph" id="totalbasebar">
+        <div class="currentscorebar" id="currentotalbar">
+          <span class="score" id="currentotalscore"></span>
+          <span class="currentscorepoint"></span>
+        </div>
+        <div class="targetscorebar" id="targetotalbar">
+          <span class="score" id="targetotalscore"></span>
+          <span class="targetscorepoint" id="targetotalpoint"></span>
+        </div>
+        <span class="scoredifference" id="totaldifference"></span>
+      </div>
+      <p id="totaldesc"></p>
+    </div>
+  </div>
+  <div class="quantverbalwrap">
+    <div class="quantscorecontent">
+      <label class="quantscoretitle">Quant Score</label>
+      <label class="quantscore" id="quantscoretitle"></label>
+      <div class="graph" id="quantbasebar">
+        <div class="currentscorebar" id="currentquantbar">
+          <span class="score" id="currentquantscore"></span>
+          <span class="currentscorepoint"></span>
+        </div>
+        <div class="targetscorebar" id="targetquantbar">
+          <span class="score" id="targetquantscore"></span>
+          <span class="targetscorepoint" id="targetquantpoint"></span>
+        </div>
+        <span class="scoredifference" id="quantdifference"></span>
+      </div>
+      <p id="quantdesc"></p>
+    </div>
+    <div class="verbalscorecontent">
+      <label class="verbalscoretitle">Verbal Score</label>
+      <label class="verbalscore" id="verbalscoretitle"></label>
+      <div class="graph" id="verbalbasebar">
+        <div class="currentscorebar" id="currentverbalbar">
+          <span class="score" id="currentverbalscore"></span>
+          <span class="currentscorepoint"></span>
+        </div>
+        <div class="targetscorebar" id="targetverbalbar">
+          <span class="score" id="targetverbalscore"></span>
+          <span class="targetscorepoint" id="targetverbalpoint"></span>
+        </div>
+        <span class="scoredifference" id="verbaldifference"></span>
+      </div>
+      <p id="verbaldesc"></p>
+    </div>
+  </div>
+</div>
+</div>
